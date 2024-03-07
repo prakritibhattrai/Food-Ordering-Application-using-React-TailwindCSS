@@ -14,3 +14,8 @@
 - Error Handling
 - HTTPS
 - Tree Shaking - remove unused folder
+
+# Tailwind CSS
+
+- UI Desing
+- Performance Optimization

@@ -5,10 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="./index.css" />
+    <style>
+      /* Custom styles for previous and next buttons */
+      .slick-prev,
+      .slick-next {
+        display: block;
+        color: #171515; /* Change the text color */
+        background-color: rgb(
+          245,
+          242,
+          242
+        ); /* Change the background color on hover */
+        border-radius: 100%;
+        box-shadow: none;
+      }
+
+      /* Additional styles for hover effects, if needed */
+      .slick-prev:hover,
+      .slick-next:hover {
+        background-color: rgb(
+          201,
+          201,
+          201
+        ); /* Change the background color on hover */
+        color: #171515; /* Change the text color */
+      }
+    </style>
   </head>
+
   <body>
     <div id="root"></div>
 
-    <script type="module" src="./App.js"></script>
+    <script type="module" src="./src/App.js"></script>
   </body>
 </html>
