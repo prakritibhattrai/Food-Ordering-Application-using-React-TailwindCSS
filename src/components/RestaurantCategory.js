@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import ItemList from './ItemList'
 
 const RestaurantCategory = ({ card, showItems, setOpenMenuIndex }) => {
-    // console.log(card?.card?.card?.itemCards)
     return (<>
 
         {card?.card?.card?.title && (

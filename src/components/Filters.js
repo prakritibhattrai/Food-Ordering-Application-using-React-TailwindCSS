@@ -1,8 +1,7 @@
 const Filters = () => {
-    return (<>
-
-
-    </>)
+    return (
+        <></>
+    )
 }
 
 export default Filters

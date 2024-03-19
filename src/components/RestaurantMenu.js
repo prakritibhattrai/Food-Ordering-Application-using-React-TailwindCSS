@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
-import { API_URL, RESTAURANTS_MENU_API } from "../utils/constants"
+import { RESTAURANTS_MENU_API } from "../utils/constants"
 import { useParams } from "react-router-dom"
 import Header from "./Header";
 import Shimmer from "./Shimmer";
 import RestaurantCategory from "./RestaurantCategory";
+import Footer from "./Footer";
 
 const RestaurantMenu = () => {
     const { resId } = useParams();
@@ -19,23 +20,23 @@ const RestaurantMenu = () => {
         setRestaurant(jsonData.data)
     }
     if (restaurant === null) return <Shimmer />
-    const { name, cuisines, title, areaName, avgRatingString, costForTwoMessage, sla, feeDetails } = restaurant?.cards[0]?.card?.card?.info
+    const { name, cuisines, areaName, avgRatingString, costForTwo, sla } = restaurant?.cards[0]?.card?.card?.info
     const itemCards = restaurant?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards || [];
-    //console.log(itemCards);
     return (
         <>
             <Header />
             <div className="px-8 flex flex-col justify-center items-center pt-15 bg-slate-50">
                 <div className="py-4 md:w-4/6 text-left flex justify-between border-dotted border-b border-gray-400">
-                    <div>
+                    <div className="text-gray-950 font-md">
 
                         <div className="font-bold text-xl">{name}</div>
-                        <p className="font-light text-sm text-gray-500">{cuisines.join(", ")}</p>
-                        <p className="font-light text-sm text-gray-500">{areaName}, {sla?.lastMileTravelString}</p>
-                        <div className="my-2 text-sm text-gray-500 pb-2 border-bottom border-dashed border-gray-500">
-                            {feeDetails?.message}
-                        </div>
-                        <div className="text-sm font-bold">{costForTwoMessage}</div>
+                        <p className=" text-md text-gray-500">{cuisines.join(", ")}</p>
+                        <p className=" text-sm text-gray-500">{areaName}, {sla?.lastMileTravelString}</p>
+                        <p className=" text-sm text-gray-500 mt-1">  Delivery Fee will be aaplied</p>
+                        <p className=" text-sm text-gray-500">
+                            Cost for Two ${costForTwo % 10000 !== 0 ? costForTwo / 10000 : (costForTwo / 10000).toFixed(2)}
+                        </p>
+
 
                     </div>
                     <div className="border border-gray-200  shadow-md rounded font-semibold h-10 mt-1 p-2">
@@ -59,7 +60,7 @@ const RestaurantMenu = () => {
 
                 </div>
             </div>
-
+            <Footer />
         </>
 
     )
